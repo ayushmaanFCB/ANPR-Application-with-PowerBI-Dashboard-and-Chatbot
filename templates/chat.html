@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat with the Bot</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{{url_for('static',filename='css/chat_styles.css')}}" />
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"
+    data></script>
+
+  <div class="container">
+    <div class="row" id="box-header">
+      <h1>Chat with Bot</h1>
+    </div>
+
+    <div class="row" id="chatbox">
+      <div class="d-flex flex-column mb-3" id="innerchatbox">
+        <div class="p-2" id="reply">
+          <img
+            src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/926a4b/external-chatbot-metaverse-tanah-basah-glyph-tanah-basah.png" />
+          <span id="reply-text">Hello, how can I assist you?</span>
+          <br><br>
+          <img
+            src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/926a4b/external-chatbot-metaverse-tanah-basah-glyph-tanah-basah.png" />
+          <span id="reply-text">Ask me about the vehicluar data of the campus.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="box-footer">
+      <div class="col-9">
+        <div class="row" style="height: 4.5rem;">
+          <input type="text" id="user_message" name="user_message" class="form-control" style="height: 100%;" required>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="row" style="height: 4.5rem;">
+          <button py-click="send_msg()" id="send" class="py-button" style="height: 100%;">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD+0lEQVR4nNVZTagbVRS+iopVQVSs4m8V1GK7U6rg4gm2vvfOyatFiG6sLkp+zslrS1ERV3FXRV7fnDNpIbhQaKWiG8GVBRH/F1poK9bftrS2obRdtC5a8S9yJzM2jZk0M5PJzPvgLpKZufd+c+537nfuGLOAoVRYowx7hXCXWYjQ2elHlPELZWzbJgxHzEKCzhaWCuO7wvhPQMJrBDvMQsBcBW9VxqYS/nkBgfOtZPKMBhevEcKXlOG3EAJecyp4j8kjmuUHLhfCshIcH0TAby2TN7SNucQlLCrhL0MQyKc+lHClEOwemkDe9OFUcbkQfhCDQDsX+nDKhTs6mQj+jktCs9SHW1tzgzK+KoznEhBoZ6aPZrlwlU2lwng6MQHOQB/1ev1SJXxWCI6NkEB7rProZCLcN2oCOi59zDM8JISfpESgnbo+Qk1dOq00cgJubfUtSvjGAFM35FvGE5noY1hTd7HmR7ARwZq0sjB1FyNxThjWCuP2sekjlqkbvJR+dWvTDwrDU2PTh8Y3dSGRgE+dDTM3bSG8WwnPRHnWiaOPpKYupDXt8qzXJy4Tgi8jPtvKwtT1LqXflWBdMIYQbo7eB+wYv6nrXkoEx6Q69fB5EoUJYfgrRl+lLExdQGK3jXAw1jbC65ThcJy+nDB9pGnqPBKM2+c2FRd1j6mE78fsrxUaCSH4OCUCfyjjbO94SsAJ+nw7nAjjRyMnQnjCreGj/TKgEpxN0HdpoD4aPLNMCF8Rgu8TR4Jgj87O3NU7xpvPTVzpXUvQtxNl/whIKeN30UMP77z+/KqrQyK/NeFLapm4sLuuS7hRCD8fZM3tNUveWph+/TiMkNja04jqj/nK5JK+pAjPuFVcPfjcFk7msv6Yr0wuEcKvO0QKT4fdZ1P7qJKJk1Z9/p9HquCK8Hvw5dzX50Jw0A7SYLgztG7v7CWJicig/SMp7H5gtVIvFq/4H8n1U7fZWmNE0Windn7V8Up2ADjZe21u3ePXK+P+IJvlWx+Vqfu9iRLu6930lOAzfwLfeNVfcg/XMmnB4cJjfkQ+vNB8wnsdgnCwwXCz/X++OnlfIjKU5vkVwTM+kbeC/4TB8UmcspPvvt+tTd+rDEdzpQ8LZXjRX1qb7W8heMF/e2ftp2MTsvco46Hc6MNCCLf4EdlgN0SvHO60J80A2FQdpO3M9WGhBDv9ZeR6dbhPygx/FnAgc330K8aE4TUTAREiUzJpQgh/7HprO23GitrHVnridiH4OTN9WAQHatYQ9tvZh4XnABh+6k8Ejsbtd/gJEO5Sxq+a5ZXXjuQkn/GHsfqrtGCPTpXh27HqIy1sq65a3P2ZLvPv50kg66dutIfbNitGffhfK46ixLbm7vkAAAAASUVORK5CYII=">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p hidden id="records">{{data}}</p>
+
+
+  <py-script>
+    import json
+    from js import localStorage, document, console, XMLHttpRequest
+
+    bearer = "Bearer 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"
+
+    engine = "text-davinci-003"
+
+    records = document.getElementById("records").innerHTML
+
+
+    def send_msg():
+      message = document.getElementById("user_message").value
+      document.getElementById("user_message").value = ""
+
+      div = document.createElement("div")
+      div.className = "p-2"
+      div.id = "message"
+      span = document.createElement("span")
+      span.id = "message-text"
+      span.textContent = message
+      div.append(span)
+      document.getElementById("innerchatbox").append(div);
+
+      message = message + " in " + records
+
+      xhr = XMLHttpRequest.new()
+      xhr.open("POST", "https://api.openai.com/v1/completions", False)
+      xhr.setRequestHeader("Content-Type", "application/json")
+      xhr.setRequestHeader("Authorization", bearer)
+      data = json.dumps({
+      "model": engine,
+      "prompt": message,
+      "max_tokens": 100,
+      "temperature": 0,
+      "top_p": 1,
+      "frequency_penalty": 1.2,
+      "presence_penalty": 0
+      })
+      xhr.send(data)
+      json_response = json.loads(xhr.response)
+      console.log(json_response)
+      completion_text = json_response["choices"][0]["text"]
+
+      #completion_text = "I am the reply"
+
+      div2 = document.createElement("div")
+      div2.className = "p-2"
+      div2.id = "reply"
+      img = document.createElement("img")
+      img.setAttribute("src",
+      "https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/926a4b/external-chatbot-metaverse-tanah-basah-glyph-tanah-basah.png")
+      div2.appendChild(img)
+      span2 = document.createElement("span")
+      span2.id = "reply-text"
+      span2.textContent = completion_text
+      div2.appendChild(span2)
+      innerchatbox = document.getElementById("innerchatbox")
+      innerchatbox.appendChild(div2)
+  </py-script>
+
+
+</body>
+
+</html>

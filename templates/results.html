@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon.png') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/styles.css')}}"
+    />
+  </head>
+
+  <body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+
+    <div id="chat-button">      
+      <a href="/chat" target="_blank">
+        <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/926a4b/external-chatbot-metaverse-tanah-basah-glyph-tanah-basah.png">
+      </a>
+    </div>
+
+
+    <div style="background-color: rgb(7, 7, 5)" id="site-header">
+      <p style="text-align: center">
+        <img
+          src="{{url_for('static',filename='/images/favicon.png')}}"
+          alt="Bootstrap"
+          width="70px"
+          height="70px"
+          style="padding-top: 10px"
+        />
+      </p>
+      <h1 id="home-title">LICENSE PLATE DETECTION & DASHBOARD</h1>
+
+      <nav class="navbar navbar-expand-lg navbar-custom">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container-fluid" id="nav-container">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="/"
+                  style="color: rgb(146, 106, 75)"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  href="/dashboard"
+                  style="color: rgb(146, 106, 75)"
+                  >View Dashboard</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link active dropdown-toggle"
+                  style="color: rgb(146, 106, 75)"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Other Actions
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="/database">View Database</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/technologies"
+                      >Technologies used</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="https://portfolio-de-ayushmaan.000webhostapp.com/"
+                      target="_blank"
+                      >About the Developer</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search" action="/search" method="POST">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <a href="#" class="btn btn-primary" id="subheader"
+            >Detection Model Results</a
+          >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12" id="results-info">
+          <hr />
+          <h1>Vehicle License Numbers fetched</h1>
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th>LICENSE PLATE NUMBER</th>
+                <th>STATE OF REGISTRATION</th>
+                {%if file_type == 'Image'%}
+                <th>DETECTED PLATE / REGION</th>
+                {%endif%}
+              </tr>
+            </thead>
+            <tbody>
+              {%for plate in text%}
+              <tr>
+                <td>{{plate}}</td>
+                <td>{{states.get(plate[:2])}}</td>
+                {%if file_type == 'Image'%}
+                <td>
+                  <img
+                    src="{{url_for('static',filename='/downloads/'+fn)}}"
+                    width="250rem"
+                    height="50rem"
+                    style="border-style: solid; border-color: rgb(146, 106, 75)"
+                  />
+                </td>
+                {%endif%}
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+          <hr />
+          <h2>System Date and Time</h2>
+          <div class="row">
+            <div class="col-6">
+              <h3>Date : {{date}}</h3>
+            </div>
+            <div class="col-6">
+              <h3>Time : {{time}}</h3>
+            </div>
+          </div>
+
+          <a href="/saveData" class="btn btn-primary" id="button1"
+            >Save to Database with Current Time</a
+          >
+          <hr />
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <a href="https://github.com/ayushmaanFCB" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="4.8rem"
+              height="4.8rem"
+              viewBox="0 0 48 48"
+              style="fill: #926a4b"
+            >
+              <path
+                d="M44,24c0,8.96-5.88,16.54-14,19.08V38c0-1.71-0.72-3.24-1.86-4.34c5.24-0.95,7.86-4,7.86-9.66c0-2.45-0.5-4.39-1.48-5.9 c0.44-1.71,0.7-4.14-0.52-6.1c-2.36,0-4.01,1.39-4.98,2.53C27.57,14.18,25.9,14,24,14c-1.8,0-3.46,0.2-4.94,0.61 C18.1,13.46,16.42,12,14,12c-1.42,2.28-0.84,4.74-0.3,6.12C12.62,19.63,12,21.57,12,24c0,5.66,2.62,8.71,7.86,9.66 c-0.67,0.65-1.19,1.44-1.51,2.34H16c-1.44,0-2-0.64-2.77-1.68c-0.77-1.04-1.6-1.74-2.59-2.03c-0.53-0.06-0.89,0.37-0.42,0.75 c1.57,1.13,1.68,2.98,2.31,4.19C13.1,38.32,14.28,39,15.61,39H18v4.08C9.88,40.54,4,32.96,4,24C4,12.95,12.95,4,24,4 S44,12.95,44,24z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ayushmaan-das-635ab621a"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="6.4rem"
+              height="6.4rem"
+              viewBox="0 0 72 72"
+              style="fill: #926a4b"
+            >
+              <path
+                d="M 29.5 14 C 15.125 14 14 15.125 14 29.5 L 14 42.5 C 14 56.875 15.125 58 29.5 58 L 42.5 58 C 56.875 58 58 56.875 58 42.5 L 58 29.5 C 58 15.125 56.875 14 42.5 14 L 29.5 14 z M 26 22 L 46 22 C 49.71 22 50 22.29 50 26 L 50 46 C 50 49.71 49.71 50 46 50 L 26 50 C 22.29 50 22 49.71 22 46 L 22 26 C 22 22.29 22.29 22 26 22 z M 28.121094 24.550781 C 26.781094 24.550781 25.695312 25.636609 25.695312 26.974609 C 25.695312 28.312609 26.779094 29.400391 28.121094 29.400391 C 29.459094 29.400391 30.546875 28.313609 30.546875 26.974609 C 30.546875 25.637609 29.458094 24.550781 28.121094 24.550781 z M 40.820312 30.982422 C 38.796312 30.982422 37.438812 32.092531 36.882812 33.144531 L 36.826172 33.144531 L 36.826172 31.316406 L 32.835938 31.316406 L 32.835938 44.705078 L 36.992188 44.705078 L 36.992188 38.080078 C 36.992187 36.334078 37.325234 34.644531 39.490234 34.644531 C 41.624234 34.644531 41.652344 36.640359 41.652344 38.193359 L 41.652344 44.705078 L 45.810547 44.705078 L 45.8125 44.705078 L 45.8125 37.361328 C 45.8125 33.756328 45.033313 30.982422 40.820312 30.982422 z M 26.039062 31.316406 L 26.039062 44.705078 L 30.201172 44.705078 L 30.201172 31.316406 L 26.039062 31.316406 z"
+              ></path>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/ayushmaan.fcb/" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="6.4rem"
+              height="6.4rem"
+              viewBox="0 0 72 72"
+              style="fill: #926a4b"
+            >
+              <path
+                d="M 35.75 14 C 15.579 14 14 15.579 14 35.75 L 14 36.25 C 14 56.421 15.579 58 35.75 58 L 36.25 58 C 56.421 58 58 56.421 58 36.25 L 58 35.75 C 58 15.579 56.421 14 36.25 14 L 35.75 14 z M 30 22 L 42 22 C 49.419 22 50 22.581 50 30 L 50 42 C 50 49.419 49.419 50 42 50 L 30 50 C 22.581 50 22 49.419 22 42 L 22 30 C 22 22.581 22.581 22 30 22 z M 45.496094 25 C 44.668094 25.002 43.998 25.674906 44 26.503906 C 44.002 27.331906 44.674906 28.002 45.503906 28 C 46.331906 27.998 47.002 27.325094 47 26.496094 C 46.998 25.668094 46.325094 24.998 45.496094 25 z M 35.976562 26 C 30.454563 26.013 25.987 30.501437 26 36.023438 C 26.013 41.545437 30.501437 46.013 36.023438 46 C 41.545437 45.987 46.013 41.498562 46 35.976562 C 45.987 30.454563 41.498562 25.987 35.976562 26 z M 35.990234 32 C 38.199234 31.995 39.994 33.781234 40 35.990234 C 40.005 38.199234 38.218766 39.995 36.009766 40 C 33.800766 40.005 32.006 38.218766 32 36.009766 C 31.995 33.800766 33.781234 32.006 35.990234 32 z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.facebook.com/AYmaan.AsesinoDeRey.10"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="4.6rem"
+              height="4.6rem"
+              viewBox="0 0 50 50"
+              style="fill: #926a4b"
+            >
+              <path
+                d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"
+              ></path>
+            </svg>
+          </a>
+          <br />
+          This application was developed at Sri Ramachandra Faculty of
+          Engineering and Technology, SRIHER, Chennai.
+          <br />
+          Developer - Ayushmaan Das - 2nd Year (B.Tech CSE AI and ML)
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+  </footer>
+</html>

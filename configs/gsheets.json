@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "anpr-powerbi",
+    "private_key_id": "594ef8627e62dd57b62daaecd55a2ed468586291",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCyP+8k6fo9vC2V\ny7dUkVHE4aI1smpj7QF692tOKcEW6Q7cPaBwRlZeZxVTr2v+pdRW3inUTcfWo2Qh\npq5q0d8rEtHGN91UNQ1vIqOVakG+VPPMbibwrVpXYf4eePFgc8iJztr/LPaI8E/B\nXxvGUj8v6HzODlbvrORWOujTJCbTZrxXyuFdMjmkOP0ZexZFrjmbNZTEnp1foFGJ\np9tBSl3qz92ug2lGkNHGs+v7srleC3aqEhIBqxPkq6Iq3OgqX7LzBlb41zvgp7Cg\n1xrPWtPjU+rGYADThRMai5yX84jgOs7MJcfsJsRNA0RWxGEVDjVJRxFBPhhR8pSp\nVe8+kjrHAgMBAAECggEAHEbZLJ1zhaye/KbrB97fvmBe567MgtqbxAKRAr7L81L4\neQbLt1PpKqOmtfZbpvNumnM25oeKPqn/3fi/rZFqmj4rigrdsRiTb4Bqu+61zDhU\nzqbgxYhyju8sLXBZNkhX1Ui75AQhffrFZDMuyEjO3k4+0j9jGjVuqaFBwxD2mc1s\nF8Gu+qZEagG0tWrpzHpDlEf7H1PXQeGVeIOy3/8EIgnLrZVNtCbWko9smI0P8sCa\ncoauN6Pr8e6wwWvSyS3FGjwD5olis0OlKm19ANmmtbAiBxL8Gqh4BradSQIHZOoP\n920X9gx03+BzF5C8y41p7xH44e6KA16YQw8AwfplwQKBgQDfC/2Uag1nAQ4tWj6p\n2wAsrzPExsmESE5RQbj+8nx7eb68YYNoU0Rl9Z5gS+Idp0VsP6O+NpkZgQjos9uW\nkWdJi9rzODnxNFoDh/wzd1ENH3fBAhEg5ERQLAC2fIyq4q/itharObvoQbqiX5MQ\ne/qslPPw3XkaiBf6QH0vpEjiBwKBgQDMlaQ8HH5ER/uaRg9YNBAjMWH+se5MWiP7\nrIdlBqWyDghCnp2Zt3yRNdT9qHX38kzQPTgAYo03qzacD7tFiCnP7G4OD40FnL68\nyvqbvasokwKxopkWCqUffNoDxop5sxgUkVkog0cFjSc+Zj/lPnGYxZBH06+ejwZ6\ns+rwA2axQQKBgQDY+ociu9Bx5ZrvD51qCzuuPHn18RPUdaqKbY8TpLzoOVUNWSdG\nc8pUDY6WSvuasUBdv8MApYhmQRpzlZQGc0ixSTYj6Qyk0rLGQKFdR7M3Oud6gRI8\nlxLFkyjWXW9SRdeoik6fHzjnBhoTHzqnjJQdE4IDTNAkuUPqFJYzpHOqPQKBgA3Y\nNpQGzZirUmB/SzyJ0WnARsRooBq0oui+JS92ArKI9pAjkcC8RQbCoNZFly4fTIlv\nCyIjiTDyOjDXc7Hh5Ap5En2LGdz+XX4DMnBlpnaJdE43FasDL2dxGIPW5LoVn5SM\nvX7bW2wJwFUdsEdAMYnIHNpvfdv6C9Mz57s0T7fBAoGBAMXmWNryyg1AyU1UlZ9Q\n5EdcBEIOWF1e5kOf93FPSsVFIUCYw1pqET9yRQL/ZsXZZrAY9x9MxXiuoomuiHQI\nUyOz9sAfhQCyZdHoBcuP0C0VxEyVJxsp7qcNcWkQnWzmesCVQGLOEnFpkLu9UI9L\nVP98J5YQZEXDCDu7VY0Nl1au\n-----END PRIVATE KEY-----\n",
+    "client_email": "accessgoogleapi@anpr-powerbi.iam.gserviceaccount.com",
+    "client_id": "110220343576062861121",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/accessgoogleapi%40anpr-powerbi.iam.gserviceaccount.com"
+  }
+  

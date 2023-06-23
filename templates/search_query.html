@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon.png') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/styles.css')}}"
+    />
+  </head>
+
+  <body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+
+    <div id="chat-button">      
+      <a href="/chat" target="_blank">
+        <img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/926a4b/external-chatbot-metaverse-tanah-basah-glyph-tanah-basah.png">
+      </a>
+    </div>
+
+
+    <div style="background-color: rgb(7, 7, 5)" id="site-header">
+      <p style="text-align: center">
+        <img
+          src="{{url_for('static',filename='/images/favicon.png')}}"
+          alt="Bootstrap"
+          width="70px"
+          height="70px"
+          style="padding-top: 10px"
+        />
+      </p>
+      <h1 id="home-title">LICENSE PLATE DETECTION & DASHBOARD</h1>
+
+      <nav class="navbar navbar-expand-lg navbar-custom">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container-fluid" id="nav-container">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="/"
+                  style="color: rgb(146, 106, 75)"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  href="/dashboard"
+                  style="color: rgb(146, 106, 75)"
+                  >View Dashboard</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link active dropdown-toggle"
+                  style="color: rgb(146, 106, 75)"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Other Actions
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="/database">View Database</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/technologies"
+                      >Technologies used</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="https://portfolio-de-ayushmaan.000webhostapp.com/"
+                      target="_blank"
+                      >About the Developer</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search" action="/search" method="POST">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                name="plate_query"
+                id="plate_query"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container-fluid" id="main-content">
+      {% if message == "Success"%}
+      <div class="row">
+        <div class="col-12">
+          <a href="#" class="btn btn-primary" id="subheader">Search Results</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <table class="table table-borderless table-query">
+            <tbody>
+              <tr>
+                <td class="align-middle">
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFdElEQVR4nO1aaWhcVRS+VWrdoH/cFwT1hwuomB+CUkVNdeacl1al4xotgkzmnMlEa6xFECaK4prl3Emro7RqW3+0KFXB+kOkCEpxwV8VFFN3xaqxFCuK2EbOm8n43mzJZN6bydj3wYWQ5N57vvPOuWe515gIESJEiBAhQoQIESJEiNA48knn6DHquWCU4RJL2C0Myy05NwlhMkd4txCusYyPWMbHp4cQjljGvHcI4ZNl//OAJbxf1xlL482WAG0Kl4wyXDRCeObYQM+Jpp2wqXjcMr4vDP9Yxqm2DMKfhfHlce45v2XEp4xZIIRDbSNdZRQ+AvS1RAFCcJ9/czxoCb+zjJ9axo+F8W3L8IYl3OKaN8Gox6wfU5eoPeBhrxtYgnWWYL0wbrUEbwrjO7qH7iUEv1dRxI2hkl9Ly0+3hPs95LePM5xh2oCR5LUnC+OffpeAn/LJ7sWhbWoZhkvkCXZlE4kjTJswvCpxlCXcV2EFhGtC2TCf7F7s3VAYV4R5zoyl8fq67uK6WpXzgOCHUD6MeH2fcGJrInG4CQmW4ZZmDsUcOXcGKlA+2bVQGL4taTkVT5sQYRmyTUUFgl1qRcEJRNDr2WDyqcGlx5gQEUiYJcDABLKMn3gWf8iEjCAUIAQ7AhFmjJ2rPb7/1zjDSSZkBJVoaXrevDCM2z2L5gNhONOeQWWahFuaEsT2O+dYggPFsHdwlOBc00EK0BRZMrGz5iyIJVjvWex10yIEWWsIQW5OQqxLLT3Bl2qmcInpRAUw/PF00jmu/oaMt7mJDkHvKMPl49xzthYunkU+aBV5V57Aq014UA/vXNq5OJfCZZrH5NJxZ5r8ilksslsrMmFcq2HQMgzkUvFbhZxrtEEhmdhpL6y84sigFGAJNgergFru4fQY1UhgixLuF8KvC+UqfqT5ujBsKxKa7vxIWefHl+Nbwo1uid0CBViCG1yNu2ZB8Ki7OcEOIfiiotTs4FFsmHxvGXcK46v6EdSCzYy+mIkdr+0mm4pf5Z4TabxHGJ6wDC8W84OdlvEzrcM1SWodIfxbGPcI4ed6PlnCt/TjFcv1QUt4hzDEbD9eqH2DMAu3iho9l152ivTFzhOCS7VJqtaVI0xot0YbnN5mqW+ocot/1yaoztGSWNew/fHL9EMM9+GpYdchEYbdTotzXaH+h9VaVWnru9M0o5aip7y21tUt1BLrRqopYxZYxn5LsLcyXMCvGvoCrbFDQjabPcwyrBLG36qcH5M1u8fC8MwsTtMN81kJbsue4aUZeRCKb6Kk43eVxfOJ0q1N4eepVnWDmoEQZGbLYyyFK91J2kC0jD96Jj0vmdii0qKZ2CJ/UYR79Jww8wzq35bhl9ny0LuMfLJroa/h4SZAnkm+yYy7Pa4QM/MMbtxvlAfBlUbjr8c3nq21QdGUpk1o0MwjuJUr4buN84CB8g5sfjYTNUSW/11LzmIm9lVbL0wb4GEZsv7Sk3CimumofwnBlxVFRBF6XW0Zvmkz6alGeQjhUGXtrZeRnsnuJIYNnsX3jXPiWH/+AB+2nXSFEmbgUVMB7A49KPJC8JzvyxfMZrVXq9pAaTvZ2qMOj/oKmKo29DGCZlplPjU4D4jOaUilAlxTnqxiTnuFnHurZYHz7bFEUwoQwqFCSRt3lLCau/5cL/H53ynANIhIAdTpFpCKp0u/JNzYsAUwbupYBaTiaaO98v8UAAeUUP2HTL5XGpumr846cQhh17Qfv9JuYVpOnmFbyYy15XVIKYHwtarNVSk8YW3UjN7zve1r4Sju3ai8I4GGNJlD6AwKgcsrkQIwsgAbuQAewmcAw+2NhxTobSnrMOXN6q1K4VHk7EIRQW95f6CVCELefwHKiR7xgAlJtAAAAABJRU5ErkJggg=="
+                  />
+                </td>
+                <td class="align-middle">{{result['Registration_Number']}}</td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD8UlEQVR4nO1aPWzUSBSeoAMKoLgDKkpokSDhrgACQggUv2fgmrQH4qTgN5tUV1wBkvlpQICybzY6CQkpaYAWEa5LAwEK6BB05NoT0nWXChEtenYcwv4k47U39i7zSU/r9cybn8/z3rx5tlIODg4OG4C6UgOTGo6xhltMOGs0LiRlci33pMwEOCx1VT/BBJ5nCD8YjfXVslLecD+qG3ie6nVwMHJQfu9ewj1M8H8KAhZFR8omNRxQvYa6UgNM+Cdr+Gwu4S9yjwkuN020jUhd0alV/MGoDY03wzDcpHoBYRhuMgSPVk3mFU+M7DWEj20JkLqRjsaXX9vBhz1BAhPeaHqi8VNsmmii03IVtNBhguuq7DZvCJZsn3SiZ78yYCnxK6UFEw4Zgvn8CYDXTHBYlRUm8LzEc4v9tlv2nRAgbUmbUlf6KN0WWVdqINq7CRcjb2/p8BJ9a8cYt70ofZUqWJrUcMzaji0IYI1PjcbxNfUDHFZlAUsImwMBTPCOyT+9cp9gbg39m12ZjFm1964nVe0fjQiIY/uOCWCC/zjwKmF4/Af5f/f30z+xhipr/NTWLxDOSl0Zg3WfBPM2BNRtZUqf2bess5CFgL8If5RfIUCWvhBioR8dpmQMnfSZCwG3/zi1LYv+ar2q9k8y4du0E5AxFEZAODq6JYs+E5yoVbz9huDvTifAEyNbCyOgVvl1ZxYTyCiRCfDEyO4CCfAHszjBbAJPpO8q+T8XRoAh/C3LNphRom3QaLhQGAGs8X6WQCiTLAdCRsNMcQQQ/itbV6ehcMrV1hQK3xsb2swaPxZGgIn8gOd3ehiyX2mtD0O1AM+mbSt3ApjwWeNxmAlf5L0CmPBN43HY9tjdVQJMFBIjJAnMNAmR1EKwlCRJmfwznbTRFQIM4YcpPbo9bUpszSfeMiWGN6SPWxfP7mCCf8pDgI52hAeiL4lLSWB2Iykqji92uF+TrqUhwMSDvNouLW40XLFvC660S4u3WmGlIcDEci1pK7HXvF6MSFY46/isCVAp6zWag9hpXq/GpK3GZZ91vF0lwMSyYAgwKY9sN8BhWc7tXo5KWePLUfH2rRxe1wkweQnBvAQsSbbHBnGEB+e6EU9sPAF6xSw+MuF0NcDztYp36M6Yv0vyCSJyHZ/q5GADM2nD20J8wHrY8IFbjie/iv1OgOlTcQSsB+NMAJ0PMCWwVecDdEFO0OF7hymBnTofoJ0TrBe3C1D6VHOvCGt4viF+xMGhGWbcO2K9XMe9I6rfwIRj1rZKOKb6DUzIKQhg1W8wa3/z960QzBU9XgeHjFj+fu99DgHM+1bfI5YeTDidWwRHOF30fBwcHFRf4gtVbCejhmQxEwAAAABJRU5ErkJggg=="
+                  />
+                </td>
+                <td class="align-middle">{{result['Time']}}</td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  <img
+                    src="data:image/png;base64,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"
+                  />
+                </td>
+                <td class="align-middle">{{result['Date']}}</td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  <img
+                    src="data:image/png;base64,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"
+                  />
+                </td>
+                <td class="align-middle">{{result['State']}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-4"></div>
+      </div>
+      {%endif%} {% if message == "Fail"%}
+      <script type="text/javascript">
+        alert(
+          "Sorry, the entered Registration Number is not found in our Database. Please check the number and try again."
+        );
+        window.location = "/";
+      </script>
+      {%endif%}
+    </div>
+  </body>
+
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <a href="https://github.com/ayushmaanFCB" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="4.8rem"
+              height="4.8rem"
+              viewBox="0 0 48 48"
+              style="fill: #926a4b"
+            >
+              <path
+                d="M44,24c0,8.96-5.88,16.54-14,19.08V38c0-1.71-0.72-3.24-1.86-4.34c5.24-0.95,7.86-4,7.86-9.66c0-2.45-0.5-4.39-1.48-5.9 c0.44-1.71,0.7-4.14-0.52-6.1c-2.36,0-4.01,1.39-4.98,2.53C27.57,14.18,25.9,14,24,14c-1.8,0-3.46,0.2-4.94,0.61 C18.1,13.46,16.42,12,14,12c-1.42,2.28-0.84,4.74-0.3,6.12C12.62,19.63,12,21.57,12,24c0,5.66,2.62,8.71,7.86,9.66 c-0.67,0.65-1.19,1.44-1.51,2.34H16c-1.44,0-2-0.64-2.77-1.68c-0.77-1.04-1.6-1.74-2.59-2.03c-0.53-0.06-0.89,0.37-0.42,0.75 c1.57,1.13,1.68,2.98,2.31,4.19C13.1,38.32,14.28,39,15.61,39H18v4.08C9.88,40.54,4,32.96,4,24C4,12.95,12.95,4,24,4 S44,12.95,44,24z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ayushmaan-das-635ab621a"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="6.4rem"
+              height="6.4rem"
+              viewBox="0 0 72 72"
+              style="fill: #926a4b"
+            >
+              <path
+                d="M 29.5 14 C 15.125 14 14 15.125 14 29.5 L 14 42.5 C 14 56.875 15.125 58 29.5 58 L 42.5 58 C 56.875 58 58 56.875 58 42.5 L 58 29.5 C 58 15.125 56.875 14 42.5 14 L 29.5 14 z M 26 22 L 46 22 C 49.71 22 50 22.29 50 26 L 50 46 C 50 49.71 49.71 50 46 50 L 26 50 C 22.29 50 22 49.71 22 46 L 22 26 C 22 22.29 22.29 22 26 22 z M 28.121094 24.550781 C 26.781094 24.550781 25.695312 25.636609 25.695312 26.974609 C 25.695312 28.312609 26.779094 29.400391 28.121094 29.400391 C 29.459094 29.400391 30.546875 28.313609 30.546875 26.974609 C 30.546875 25.637609 29.458094 24.550781 28.121094 24.550781 z M 40.820312 30.982422 C 38.796312 30.982422 37.438812 32.092531 36.882812 33.144531 L 36.826172 33.144531 L 36.826172 31.316406 L 32.835938 31.316406 L 32.835938 44.705078 L 36.992188 44.705078 L 36.992188 38.080078 C 36.992187 36.334078 37.325234 34.644531 39.490234 34.644531 C 41.624234 34.644531 41.652344 36.640359 41.652344 38.193359 L 41.652344 44.705078 L 45.810547 44.705078 L 45.8125 44.705078 L 45.8125 37.361328 C 45.8125 33.756328 45.033313 30.982422 40.820312 30.982422 z M 26.039062 31.316406 L 26.039062 44.705078 L 30.201172 44.705078 L 30.201172 31.316406 L 26.039062 31.316406 z"
+              ></path>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/ayushmaan.fcb/" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="6.4rem"
+              height="6.4rem"
+              viewBox="0 0 72 72"
+              style="fill: #926a4b"
+            >
+              <path
+                d="M 35.75 14 C 15.579 14 14 15.579 14 35.75 L 14 36.25 C 14 56.421 15.579 58 35.75 58 L 36.25 58 C 56.421 58 58 56.421 58 36.25 L 58 35.75 C 58 15.579 56.421 14 36.25 14 L 35.75 14 z M 30 22 L 42 22 C 49.419 22 50 22.581 50 30 L 50 42 C 50 49.419 49.419 50 42 50 L 30 50 C 22.581 50 22 49.419 22 42 L 22 30 C 22 22.581 22.581 22 30 22 z M 45.496094 25 C 44.668094 25.002 43.998 25.674906 44 26.503906 C 44.002 27.331906 44.674906 28.002 45.503906 28 C 46.331906 27.998 47.002 27.325094 47 26.496094 C 46.998 25.668094 46.325094 24.998 45.496094 25 z M 35.976562 26 C 30.454563 26.013 25.987 30.501437 26 36.023438 C 26.013 41.545437 30.501437 46.013 36.023438 46 C 41.545437 45.987 46.013 41.498562 46 35.976562 C 45.987 30.454563 41.498562 25.987 35.976562 26 z M 35.990234 32 C 38.199234 31.995 39.994 33.781234 40 35.990234 C 40.005 38.199234 38.218766 39.995 36.009766 40 C 33.800766 40.005 32.006 38.218766 32 36.009766 C 31.995 33.800766 33.781234 32.006 35.990234 32 z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.facebook.com/AYmaan.AsesinoDeRey.10"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="4.6rem"
+              height="4.6rem"
+              viewBox="0 0 50 50"
+              style="fill: #926a4b"
+            >
+              <path
+                d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"
+              ></path>
+            </svg>
+          </a>
+          <br />
+          This application was developed at Sri Ramachandra Faculty of
+          Engineering and Technology, SRIHER, Chennai.
+          <br />
+          Developer - Ayushmaan Das - 2nd Year (B.Tech CSE AI and ML)
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+  </footer>
+</html>

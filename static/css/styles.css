@@ -1,0 +1,320 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+head,
+body,
+footer {
+  font-family: "Roboto", sans-serif;
+  color: rgb(146, 106, 75);
+
+}
+
+html {
+  font-size: 63%;
+}
+
+#main-content {
+  min-height: 100vh;
+}
+
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 40%;
+  }
+
+  #home-features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #home-features .col-4 .card {
+    margin-bottom: 3rem;
+  }
+
+  .navbar-custom {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .navbar-toggler {
+    justify-self: center;
+  }
+
+  #results-info tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #results-info th {
+    visibility: collapse;
+  }
+
+  #tech-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .table-query img {
+    min-height: 0rem;
+  }
+
+  #uploadFile {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+body {
+  background-image: url("../images/background.gif");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.row {
+  padding: 2rem;
+  text-align: center;
+}
+
+#home-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 6.5rem;
+  font-weight: bold;
+  background: rgb(7, 7, 5);
+  text-align: center;
+  color: rgb(146, 106, 75);
+}
+
+.navbar-custom {
+  background-color: rgb(7, 7, 5);
+  font-size: 2.8rem;
+}
+
+.navbar-toggler {
+  background-color: rgb(146, 106, 75);
+}
+
+.navbar-custom li {
+  padding-left: 3rem;
+}
+
+.dropdown-menu {
+  background-color: rgb(146, 106, 75);
+  color: rgb(7, 7, 5);
+}
+
+.dropdown-menu li {
+  font-size: 2rem;
+  color: rgb(7, 7, 5);
+  padding-left: 0rem;
+}
+
+.dropdown-menu a {
+  color: rgb(7, 7, 5);
+}
+
+.dropdown-menu a:hover {
+  background-color: rgb(7, 7, 5);
+  color: rgb(146, 106, 75);
+}
+
+.card h5 {
+  font-size: 3rem;
+}
+
+#uploadFile {
+  font-size: 2.8rem;
+  background-color: rgb(7, 7, 5);
+  opacity: 0.9;
+}
+
+#subheader {
+  background-color: rgb(7, 7, 5);
+  color: rgb(146, 106, 75);
+  font-size: 3.6rem;
+  border-style: dashed;
+  border-color: rgb(146, 106, 75);
+  padding: 1rem;
+}
+
+.card {
+  background-color: rgb(7, 7, 5);
+  border-style: hidden;
+  color: rgb(146, 106, 75);
+}
+
+.btn {
+  background-color: rgb(7, 7, 5);
+  color: rgb(146, 106, 75);
+  border-color: rgb(146, 106, 75);
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+#button1:hover,
+.btn-outline-success:hover {
+  background-color: rgb(146, 106, 75);
+  color: rgb(7, 7, 5);
+  border-color: rgb(7, 7, 5);
+}
+
+form {
+  padding: 2rem;
+  background-color: rgb(7, 7, 5);
+  opacity: 0.9;
+}
+
+#results-info {
+  background-color: rgb(7, 7, 5);
+  opacity: 0.9;
+}
+
+table td,
+th {
+  font-size: 3rem;
+  color: rgb(146, 106, 75);
+}
+
+#dashboard {
+  text-align: center;
+}
+
+#home-powerbi {
+  background-image: url("../images/powerbi-bg.jpg");
+  padding: 6rem;
+  margin: 3rem;
+}
+
+footer {
+  background-color: rgb(7, 7, 5);
+  bottom: 0;
+}
+
+#database-info {
+  background-color: rgb(7, 7, 5);
+  opacity: 0.9;
+  /* max-height: 45rem; */
+  overflow-y: auto;
+}
+
+#database-info th {
+  font-size: 3rem;
+}
+
+#database-info td {
+  font-size: 2.5rem;
+}
+
+
+
+#tech {
+  background-color: rgb(146, 106, 75);
+  /* margin: 0.5rem; */
+  padding: 2rem;
+  opacity: 0.9;
+  text-align: center;
+  border-style: solid;
+  border-color: rgb(7, 7, 5);
+}
+
+#tech h1 {
+  color: rgb(7, 7, 5);
+  font-weight: bold;
+  font-size: 4rem;
+}
+
+#tech h3 {
+  color: rgb(7, 7, 5);
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+#tech img {
+  max-width: 30rem;
+  max-height: 20rem;
+  opacity: 1;
+}
+
+#tech .row {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.me-2 {
+  font-size: 2rem;
+  background-color: rgb(146, 106, 75);
+}
+
+.table-query :not(td) {
+  background-color: rgb(7, 7, 5);
+  opacity: 0.95;
+}
+
+.table-query img {
+  min-height: 11rem;
+}
+
+.table-query td {
+  opacity: 1;
+  border-top-color: rgb(146, 106, 75);
+  border-top-style: solid;
+  border-top-width: 5px;
+  border-bottom-color: rgb(146, 106, 75);
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  font-size: 4rem;
+}
+
+.table-query {
+  height: 100vh;
+}
+
+#chat-button {
+  position: fixed;
+  right: 0rem;
+  top: 50rem;
+  border-style: dotted;
+  border-color: rgb(146, 106, 75);
+  background-color: rgb(7, 7, 5);
+  padding: 2rem;
+  z-index: 1;
+  border-radius: 15rem;
+  border-width: 0.6rem;
+  margin-right: 2rem;
+  -webkit-animation-name: animateChat;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 2s;
+}
+
+#chat-button img {
+  height: 5rem;
+  /* background-color: black; */
+}
+
+@-webkit-keyframes animateChat {
+  0% {
+    border-color: rgb(146, 106, 75);
+  }
+
+  50% {
+    border-color: rgb(7, 7, 5);
+  }
+
+  100% {
+    border-color: rgb(146, 106, 75);
+  }
+}
+
+#previewFile {
+  max-height: 25rem;
+  max-width: 40rem;
+}
+
+
+#uploadFile p {
+  font-size: 2.2rem;
+}
