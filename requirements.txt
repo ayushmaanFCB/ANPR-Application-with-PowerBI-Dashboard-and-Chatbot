@@ -1,0 +1,12 @@
+flask
+torch torchvision torchaudio
+tensorflow
+opencv-python
+numpy
+pandas
+matplotlib
+easyocr
+gspread
+openai
+oauth2client
+tf-object-detection-util
