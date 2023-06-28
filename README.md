@@ -19,16 +19,12 @@ The following concepts were used:
 
 ### Runnning the app
 
-```pip install requirements.txt```
-<br>
-Due to GitHiub's size limitation, the trained model can't be uploaded into the repository directly. Hence, Jupyter Notebooks with detailed steps have been uploaded in order to set up the model and train it with the images of number plates. Every step must be executed sequentially and in the same order.
-<br>
-Also generate API Keys for OpenAI and Google Sheets and place them in the config files.
-<br>
-After setting up the model correctly, run the python applicat:
+- ```pip install requirements.txt```
+- Due to GitHiub's size limitation, the trained model can't be uploaded into the repository directly. Hence, Jupyter Notebooks with detailed steps have been uploaded in order to set up the model and train it with the images of number plates. Every step must be executed sequentially and in the same order.
+- Also generate API Keys for OpenAI and Google Sheets and place them in the config files.
+- After setting up the model correctly, run the flask application:
 ```python main.py```
-<br>
-To use flask in debugging mode, use ```app.run(debug==True)``` in the main code of main.py
+- To use flask in debugging mode, use ```app.run(debug==True)``` in the main code of main.py
 
 <hr>
 
