@@ -17,6 +17,21 @@ The following concepts were used:
 
 <hr>
 
+### Runnning the app
+
+```pip install requirements.txt```
+<br>
+Due to GitHiub's size limitation, the trained model can't be uploaded into the repository directly. Hence, Jupyter Notebooks with detailed steps have been uploaded in order to set up the model and train it with the images of number plates. Every step must be executed sequentially and in the same order.
+<br>
+Also generate API Keys for OpenAI and Google Sheets and place them in the config files.
+<br>
+After setting up the model correctly, run the python applicat:
+```python main.py```
+<br>
+To use flask in debugging mode, use ```app.run(debug==True)``` in the main code of main.py
+
+<hr>
+
 ### Application Preview
 
 ![home-ss](https://github.com/ayushmaanFCB/ANPR-Application-with-PowerBI-Dashboard-and-Chatbot/assets/92968225/48cebf41-2d78-4339-8715-bf0f0b79ca7c)
