@@ -1,5 +1,8 @@
 # ANPR Flask Web Application with PowerBI Dashboard and Chatbot
 
+Project Guide and Mentor: <i><b>Dr. Jayanthi G</b>, Associate Professor, Sri Ramachandra Faculty of Engineering and Technology, SRIHER, Chennai</i>.
+(https://github.com/scholargj)
+
 The following project was created to solve the issues of vehicular traffic data management within campuses or any enclosed area.
 The Flask Web Application has the features to detect vehicular number plates from Images or Videos using TensorFlow's Object Detection Model. The detected data is stored in Google Sheets with the timestammp.
 In addition to this, there is a PowerBI dashboard that fetches live data from Sheets and visualizes the fetched data.
